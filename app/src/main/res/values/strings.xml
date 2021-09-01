@@ -7,4 +7,9 @@
     <string name="label_hour">Hora</string>
     <string name="label_new_task">Criar Tarefa</string>
     <string name="label_cancel">Cancelar</string>
+    <string name="label_fab_new_task">Criar nova tarefa</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Deletar</string>
+    <string name="empty_task">Ops! Voce não possui nenhuma tarefa</string>
+
 </resources>
