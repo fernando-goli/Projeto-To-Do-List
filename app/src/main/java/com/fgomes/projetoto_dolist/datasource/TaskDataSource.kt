@@ -1,6 +1,6 @@
 package com.fgomes.projetoto_dolist.datasource
 
-import com.fgomes.projetoto_dolist.model.Task
+import com.fgomes.projetoto_dolist.data.Task
 
 object TaskDataSource {
     private val list = arrayListOf<Task>()

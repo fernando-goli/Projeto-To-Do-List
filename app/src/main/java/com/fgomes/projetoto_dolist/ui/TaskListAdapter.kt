@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fgomes.projetoto_dolist.R
 import com.fgomes.projetoto_dolist.databinding.ItemTaskBinding
-import com.fgomes.projetoto_dolist.model.Task
+import com.fgomes.projetoto_dolist.data.Task
 
 class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCallback()) {
 
