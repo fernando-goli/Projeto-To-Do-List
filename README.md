@@ -8,3 +8,4 @@ O projeto criado é um app de lista de tarefas e altualmente esta utilizando vie
 2. ViewBinding
 3. ListAdapter
 4. Material Design
+5. LiveData
