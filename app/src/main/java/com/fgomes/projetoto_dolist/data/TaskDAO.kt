@@ -10,14 +10,15 @@ interface TaskDAO {
     suspend fun insert(task: Task)
 
     //Exibe todas task's
-    @Query("SELECT * FROM task")
+    @Query("SELECT * FROM table_task")
     fun getAll(): LiveData<List<Task>>
 
     //Delete single task
-   /* @Query("SELECT * FROM TaskTable WHERE id = :id")
-    fun delete (id: Task): LiveData<List<Task>>
+    @Query("Delete FROM table_task WHERE id = :id")
+    suspend fun delete (id: Int)
 
     @Update
-    fun update(task: Task)*/
+    suspend fun update(task: Task)
+
 
 }

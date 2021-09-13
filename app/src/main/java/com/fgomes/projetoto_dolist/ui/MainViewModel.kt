@@ -7,20 +7,23 @@ import androidx.lifecycle.viewModelScope
 import com.fgomes.projetoto_dolist.data.Task
 import com.fgomes.projetoto_dolist.data.TaskRepository
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainViewModel(private val taskRepository: TaskRepository) : ViewModel() {
 
-    fun insert (task: Task) {
-        taskRepository.insert(task)
+    fun insertTask (task: Task) {
+        taskRepository.insertTask(task)
     }
 
-    fun getAll(): LiveData<List<Task>> = taskRepository.getAll()
+    fun getAllTask(): LiveData<List<Task>> = taskRepository.getAllTask()
 
-    /*fun delete(task: Task){
-        taskRepository.delete(task)
+    fun deleteTask(id: Int)  {
+        viewModelScope.launch{
+        taskRepository.deleteTask( id )
+        }
     }
 
-    fun update(task: Task){
+    /*fun update(task: Task){
         taskRepository.update(task)
     }*/
 

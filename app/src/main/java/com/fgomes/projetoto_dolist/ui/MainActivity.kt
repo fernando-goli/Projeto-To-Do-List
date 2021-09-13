@@ -9,7 +9,6 @@ import androidx.activity.viewModels
 import com.fgomes.projetoto_dolist.App
 import com.fgomes.projetoto_dolist.adapter.TaskListAdapter
 import com.fgomes.projetoto_dolist.databinding.ActivityMainBinding
-import com.fgomes.projetoto_dolist.datasource.TaskDataSource
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,21 +34,15 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(Intent(this@MainActivity,
                 AddTaskActivity::class.java), CREATE_NEW_TASK)
         }
-        //TODO
-        //binding.rvTasks.setOnClickListener {  }
-        //binding.rvTasks.addOnItemTouchListener()
 
-
-
-        adapter.listenerEdit = {
+        adapter.listenerEdit = { task ->
             val intent = Intent(this@MainActivity, AddTaskActivity::class.java)
-            intent.putExtra(AddTaskActivity.TASK_ID, it.id)
+            intent.putExtra(AddTaskActivity.TASK_ID, task.id)
             startActivityForResult(intent, CREATE_NEW_TASK)
         }
 
         adapter.listenerDelete = {
-            //mainViewModel.delete(it)
-            TaskDataSource.deleteTask(it)
+            mainViewModel.deleteTask(it.id)
             getAllTask()
         }
     }
@@ -60,23 +53,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getAllTask() {
-        mainViewModel.getAll().observe(this){ task ->
+        mainViewModel.getAllTask().observe(this){ task ->
             binding.includeEmpty.emptyState.visibility = if (task.isEmpty()) View.VISIBLE
             else View.GONE
             adapter.submitList(task)
         }
 
-        /*
-        val list = TaskDataSource.getList()
-        binding.includeEmpty.emptyState.visibility = if (list.isEmpty()) View.VISIBLE
-        else View.GONE
-        adapter.submitList(list)
-        */
     }
 
     companion object {
         private const val CREATE_NEW_TASK = 1000
     }
-
 
 }

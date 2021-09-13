@@ -3,7 +3,7 @@ package com.fgomes.projetoto_dolist.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "table_task")
 data class Task(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String,

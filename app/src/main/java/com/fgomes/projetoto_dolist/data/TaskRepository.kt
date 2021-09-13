@@ -1,20 +1,22 @@
 package com.fgomes.projetoto_dolist.data
 
+import androidx.lifecycle.LiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class TaskRepository(private val dao: TaskDAO) {
-    fun insert(task: Task) = runBlocking {
+
+    fun insertTask(task: Task) = runBlocking {
         launch (Dispatchers.IO){
             dao.insert(task)
         }
     }
 
-    fun getAll() = dao.getAll()
+    fun getAllTask() = dao.getAll()
 
-    /*fun delete(task: Task) = dao.delete(task)
+    suspend fun deleteTask(id: Int) = dao.delete(id)
 
-    fun update(task: Task) = dao.update(task)*/
+    /*fun updateTask(task: Task) = dao.update(task)*/
 
 }

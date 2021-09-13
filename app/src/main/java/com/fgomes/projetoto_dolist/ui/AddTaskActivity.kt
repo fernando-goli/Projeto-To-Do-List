@@ -6,10 +6,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.fgomes.projetoto_dolist.App
 import com.fgomes.projetoto_dolist.databinding.ActivityAddTaskBinding
-import com.fgomes.projetoto_dolist.datasource.TaskDataSource
 import com.fgomes.projetoto_dolist.extensions.format
 import com.fgomes.projetoto_dolist.extensions.text
 import com.fgomes.projetoto_dolist.data.Task
+import com.fgomes.projetoto_dolist.datasource.TaskDataSource
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -28,8 +28,8 @@ class AddTaskActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (intent.hasExtra(TASK_ID)) {
-            val taskId = intent.getIntExtra(TASK_ID, 0)
-            TaskDataSource.findById(taskId)?.let {
+            val idTask = intent.getIntExtra(TASK_ID, 0)
+                TaskDataSource.findById(idTask)?.let {
                 binding.tilTitle.text = it.title
                 binding.tilDate.text = it.date
                 binding.tilHour.text = it.hour
@@ -38,6 +38,7 @@ class AddTaskActivity : AppCompatActivity() {
 
         insertListeners()
     }
+
 
     private fun insertListeners() {
         binding.tilDate.editText?.setOnClickListener {
@@ -78,7 +79,7 @@ class AddTaskActivity : AppCompatActivity() {
                 id = intent.getIntExtra(TASK_ID, 0)
             )
             /*TaskDataSource.insertTask(task)*/
-            mainViewModel.insert(task)
+            mainViewModel.insertTask(task)
             setResult(Activity.RESULT_OK)
             finish()
         }
