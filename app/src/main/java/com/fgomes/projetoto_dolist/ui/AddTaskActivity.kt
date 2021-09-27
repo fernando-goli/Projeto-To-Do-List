@@ -2,9 +2,7 @@ package com.fgomes.projetoto_dolist.ui
 
 import android.app.Activity
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.fgomes.projetoto_dolist.App
 import com.fgomes.projetoto_dolist.databinding.ActivityAddTaskBinding
 import com.fgomes.projetoto_dolist.extensions.format
 import com.fgomes.projetoto_dolist.extensions.text
@@ -13,13 +11,14 @@ import com.fgomes.projetoto_dolist.datasource.TaskDataSource
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
+
 
 class AddTaskActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddTaskBinding
-    private val mainViewModel: MainViewModel by viewModels {
-        MainViewModelFactory((application as App).repository) }
+    private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

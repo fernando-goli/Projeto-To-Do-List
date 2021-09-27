@@ -5,16 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
-import com.fgomes.projetoto_dolist.App
 import com.fgomes.projetoto_dolist.adapter.TaskListAdapter
 import com.fgomes.projetoto_dolist.databinding.ActivityMainBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel: MainViewModel by viewModels {
-        MainViewModelFactory((application as App).repository)  }
+    private val mainViewModel: MainViewModel by viewModel()
 
     private val adapter by lazy { TaskListAdapter() }
 
