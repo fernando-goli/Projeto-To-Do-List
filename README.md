@@ -7,5 +7,4 @@ O projeto criado é um app de lista de tarefas e altualmente esta utilizando vie
 1. MVVM
 2. Material Design
 3. Room
-
-
+4. Koin
